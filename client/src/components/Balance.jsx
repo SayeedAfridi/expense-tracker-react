@@ -6,10 +6,13 @@ const Balance = () => {
 
     const amounts = transactions.map(transaction => transaction.amount)
     const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2)
+    const sign = total < 0 ? '-' : ''
     return (
         <>
             <h4>Your Balance</h4>
-            <h1>${formatCurrency(total)}</h1>
+            <h1>
+                {sign}${formatCurrency(Math.abs(total))}
+            </h1>
         </>
     )
 }
